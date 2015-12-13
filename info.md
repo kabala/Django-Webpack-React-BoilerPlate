@@ -12,10 +12,7 @@ The goal is to load all webpack compiled files into django templates using the [
 - in the console run "pip install -r requirements.txt" to install py dependencies.
 - cd statics
 - run "npm install"
-- item
-
-
-
-
-
-Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
+- run "./node_modules/.bin/webpack --config webpack.config.js --watch" to start webpack
+- cd ../
+- run "python manage.py runserver" to start django
+- eat cookies and enjoy working ;)
