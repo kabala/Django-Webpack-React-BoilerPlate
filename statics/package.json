@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "react": "^0.14.2",
-    "react-dom": "^0.14.2"
+    "react-dom": "^0.14.2",
+    "redux-rest": "0.0.1-alpha.5"
   }
 }
