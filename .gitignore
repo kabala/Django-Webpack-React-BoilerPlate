@@ -1,0 +1,4 @@
+statics/node_modules
+statics/bower_components
+db.sqlite3
+*.pyc

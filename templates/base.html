@@ -1,0 +1,23 @@
+{% load render_bundle from webpack_loader %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="react-app"></div>
+  <h2>Publishers</h2>
+    {% for play in object_list %}
+      <li>
+        <span>{{ play.name }}</span>
+        <span>{{ play.address }}</span>
+        <span>{{ play.city }}</span>
+      </li>
+    {% endfor %}
+</body>
+
+
+{% render_bundle 'main' %}
+</html>
