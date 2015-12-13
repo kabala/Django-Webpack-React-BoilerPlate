@@ -21,7 +21,7 @@ The goal is to load all webpack compiled files into django templates using the [
 
 
 ### Features coming
-
+- restful api
 - Redux integration
 - sass integration
 - Zurb Foundation
