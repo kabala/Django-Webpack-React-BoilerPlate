@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView
+from rest_framework import viewsets
+from .serializer import UserSerializer
 from .models import Play
 
 
@@ -20,3 +22,8 @@ class PlayView(ListView):
 
         return render(request,  'base.html', params)
     """
+
+
+class ViewSet(viewsets.ModelViewSet):
+    queryset = Play.objects.all()
+    serializer_class = UserSerializer

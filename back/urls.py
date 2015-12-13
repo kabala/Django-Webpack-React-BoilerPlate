@@ -15,10 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from play.views import PlayView
+from rest_framework import routers
+from play.views import PlayView, ViewSet
 
+router = routers.DefaultRouter()
+router.register(r'users', ViewSet)
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', PlayView.as_view())
+    url(
+        r'^api-auth/',
+        include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^demo', PlayView.as_view()),
+    url(r'^', include(router.urls))
 ]
