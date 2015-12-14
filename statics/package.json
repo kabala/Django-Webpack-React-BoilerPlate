@@ -1,23 +1,24 @@
 {
-  "name": "redux-real-world-example",
+  "name": "django-webpack-react-boilerplate",
   "version": "0.0.0",
-  "description": "Redux real-world example",
+  "description": "Django Webpack React BoilerPlate",
   "scripts": {
-    "start": "node server.js"
+    "start": " ./node_modules/.bin/webpack --config webpack.config.js --watch"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rackt/redux.git"
+    "url": "https://github.com/kabala/Django-Webpack-React-BoilerPlate"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rackt/redux/issues"
+    "url": "https://github.com/kabala/Django-Webpack-React-BoilerPlate/issues"
   },
   "homepage": "http://rackt.github.io/redux",
   "dependencies": {
     "history": "1.13.1",
     "humps": "^0.6.0",
     "isomorphic-fetch": "^2.1.1",
+    "js-cookie": "^2.0.4",
     "lodash": "^3.10.1",
     "normalizr": "^1.0.0",
     "react": "^0.14.0",
