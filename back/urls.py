@@ -26,6 +26,6 @@ urlpatterns = [
     url(
         r'^api-auth/',
         include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^demo', PlayView.as_view()),
+    url(r'^', PlayView.as_view()),
     url(r'^', include(router.urls))
 ]

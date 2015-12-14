@@ -1,11 +1,13 @@
 {
-  "name": "statics",
-  "version": "0.0.0",
-  "homepage": "https://github.com/kabala/Django-Webpack-React-BoilerPlate",
+  "name": "redux-real-world-example",
+  "description": "Redux real-world example",
+  "main": "index.js",
   "authors": [
     "kabala <kabaldesign@gmail.com>"
   ],
   "license": "MIT",
+  "homepage": "https://github.com/kabala/Django-Webpack-React-BoilerPlate",
+  "moduleType": [],
   "ignore": [
     "**/.*",
     "node_modules",
@@ -15,7 +17,6 @@
   ],
   "dependencies": {
     "jquery": "~2.1.4",
-    "foundation": "~5.5.3",
-    "js-cookie": "~2.0.4"
+    "foundation": "~5.5.3"
   }
 }

@@ -1,19 +1,21 @@
-var path = require('path');
-var webpack = require('webpack');
-var BundleTracker = require('webpack-bundle-tracker');
-var BowerWebpackPlugin = require("bower-webpack-plugin");
+var path = require('path')
+var webpack = require('webpack')
+var BundleTracker = require('webpack-bundle-tracker')
+
 
 module.exports = {
-  //devtool: 'cheap-module-eval-source-map',
-  context: __dirname,
-  entry: ['./assets/js/index'],
+  devtool: 'cheap-module-eval-source-map',
+  entry: [
+    'webpack-hot-middleware/client',
+    './index'
+  ],
   output: {
-      path: path.resolve('./assets/build/'),
-      //publicPath: '/',
-      filename: '[name]-[hash].js'
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js',
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new BundleTracker({filename: './webpack-stats.json'}),
     new webpack.DefinePlugin({
@@ -22,28 +24,30 @@ module.exports = {
         'NODE_ENV': JSON.stringify('production'),
       }
     }),
-    new BowerWebpackPlugin(),
-    new webpack.ProvidePlugin({
-        'Promise': 'es6-promise', // Thanks Aaron (https://gist.github.com/Couto/b29676dd1ab8714a818f#gistcomment-1584602)
-        'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
-    }),
   ],
   module: {
-      loaders: [
-        {
-          test: /\.jsx$/,
-          exclude: /(node_modules|bower_components)/,
-          loader: 'babel',
-          query: {
-              cacheDirectory: true,
-              presets: ['es2015', 'react']
-          }
-        }
-      ]
-  },
+    loaders: [{
+      test: /\.js$/,
+      loaders: [ 'babel' ],
+      exclude: /node_modules/,
+      include: __dirname
+    }]
+  }
+}
 
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
-    modulesDirectories: ['node_modules', 'bower_components']
-  },
-};
+
+// When inside Redux repo, prefer src to compiled version.
+// You can safely delete these lines in your project.
+var reduxSrc = path.join(__dirname, '..', '..', 'src')
+var reduxNodeModules = path.join(__dirname, '..', '..', 'node_modules')
+var fs = require('fs')
+if (fs.existsSync(reduxSrc) && fs.existsSync(reduxNodeModules)) {
+  // Resolve Redux to source
+  module.exports.resolve = { alias: { 'redux': reduxSrc } }
+  // Compile Redux from source
+  module.exports.module.loaders.push({
+    test: /\.js$/,
+    loaders: [ 'babel' ],
+    include: reduxSrc
+  })
+}

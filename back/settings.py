@@ -101,7 +101,7 @@ STATIC_URL = '/statics/'
 
 WEBPACK_LOADER = {
     'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'assets/build/',
+        'BUNDLE_DIR_NAME': 'dist/',
         'STATS_FILE': os.path.join(
             BASE_DIR,
             'statics',
