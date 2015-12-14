@@ -1,0 +1,21 @@
+{
+  "name": "statics",
+  "version": "0.0.0",
+  "homepage": "https://github.com/kabala/Django-Webpack-React-BoilerPlate",
+  "authors": [
+    "kabala <kabaldesign@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "foundation": "~5.5.3",
+    "js-cookie": "~2.0.4"
+  }
+}

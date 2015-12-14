@@ -1,7 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var BundleTracker = require('webpack-bundle-tracker');
-
+var BowerWebpackPlugin = require("bower-webpack-plugin");
 
 module.exports = {
   //devtool: 'cheap-module-eval-source-map',
@@ -21,6 +21,11 @@ module.exports = {
         // This has effect on the react lib size
         'NODE_ENV': JSON.stringify('production'),
       }
+    }),
+    new BowerWebpackPlugin(),
+    new webpack.ProvidePlugin({
+        'Promise': 'es6-promise', // Thanks Aaron (https://gist.github.com/Couto/b29676dd1ab8714a818f#gistcomment-1584602)
+        'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     }),
   ],
   module: {
