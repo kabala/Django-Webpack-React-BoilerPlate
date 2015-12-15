@@ -2,6 +2,9 @@ var path = require('path')
 var webpack = require('webpack')
 var BundleTracker = require('webpack-bundle-tracker')
 
+var devFlagPlugin = new webpack.DefinePlugin({  
+  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
+});
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -24,6 +27,7 @@ module.exports = {
         'NODE_ENV': JSON.stringify('production'),
       }
     }),
+    devFlagPlugin
   ],
   module: {
     loaders: [{
