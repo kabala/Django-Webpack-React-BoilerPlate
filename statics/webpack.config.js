@@ -10,7 +10,7 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
-    './index'
+    './src/index'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -32,9 +32,15 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: [ 'babel' ],
+      loader: 'babel',
       exclude: /node_modules/,
-      include: __dirname
+      include: __dirname,
+      query: {
+        stage: 0
+      },
+      cacheDirectory: true,
+      plugins: ['transform-decorators-legacy' ],
+      presets: ['es2015', 'react', 'stage-0']
     }]
   }
 }
@@ -52,6 +58,8 @@ if (fs.existsSync(reduxSrc) && fs.existsSync(reduxNodeModules)) {
   module.exports.module.loaders.push({
     test: /\.js$/,
     loaders: [ 'babel' ],
+    plugins: ['transform-decorators-legacy' ],
+    presets: ['es2015', 'react', 'stage-0'],
     include: reduxSrc
   })
 }
