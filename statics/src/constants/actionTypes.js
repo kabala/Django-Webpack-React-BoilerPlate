@@ -1,0 +1,7 @@
+// Compras
+export const ADD_LINE = 'ADD_LINE'
+export const DELETE_LINE = 'DELETE_LINE'
+export const SAVE_PURCHASE = 'SAVE_PURCHASE'
+export const SAVE_PURCHASE_DRAFT = 'SAVE_PURCHASE_DRAFT'
+export const PURCHASE_CALC = 'PURCHASE_CALC'
+export const CHECK_PROVIDER = 'CHECK_PROVIDER'

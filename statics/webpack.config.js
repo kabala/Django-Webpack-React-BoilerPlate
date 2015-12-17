@@ -13,14 +13,14 @@ module.exports = {
     './src/index'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: '../static/dist',
     filename: 'bundle.js',
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new BundleTracker({filename: './webpack-stats.json'}),
+    new BundleTracker({filename: '../static/webpack-stats.json'}),
     new webpack.DefinePlugin({
       'process.env': {
         // This has effect on the react lib size
@@ -39,8 +39,6 @@ module.exports = {
         stage: 0
       },
       cacheDirectory: true,
-      plugins: ['transform-decorators-legacy' ],
-      presets: ['es2015', 'react', 'stage-0']
     }]
   }
 }

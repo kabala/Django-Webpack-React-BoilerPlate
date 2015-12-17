@@ -1,31 +1,27 @@
-import React, {Component} from 'react';
-import Router, {Link} from 'react-router';
-import {connect} from 'react-redux';
-import NavBar from '../components/NavBar';
-import Spinner from '../components/Spinner';
+import React, { Component } from 'react'
+import { createStore, compose , combineReducers } from 'redux'
+import { Provider } from 'react-redux'
 
-//import 'bootstrap';
-//import '../../styles/app.css';
 
-@connect(state => ({routerState: state.router, example: state.example }))
-class App extends Component {
-	constructor(props) {
-		super(props);
-	}
+import {addLine, deleteLine, savePurchase, savePurchaseDraft, purchaseCalc, checkProvider} from '../actions/purchaseActions'
+import purchase from '../reducers/purchase'
 
-	render() {
-		const {children} = this.props;
-		const {example} = this.props;
 
-		return (
-			<div>
-				<NavBar />
-				<div className='container'>
-				{example.isLoading ? <Spinner /> : children}
-				</div>
-			</div>
-		);
-	}
+const finalCreateStore = compose(
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+)(createStore);
+
+const reducer = combineReducers({purchase});
+const store = finalCreateStore(reducer);
+console.log(store.getState())
+
+export default class App extends Component {  
+  render() {
+    return (
+      <div>
+        <Provider store={store}>
+        </Provider>
+      </div>
+    );
+  }
 }
-
-export default App;
